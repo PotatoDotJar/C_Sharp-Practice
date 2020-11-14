@@ -1,8 +1,10 @@
-﻿using System;
+﻿using DotNetFrameworkRefresh.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Description;
 
 namespace DotNetFrameworkRefresh.Data
 {
@@ -19,6 +21,8 @@ namespace DotNetFrameworkRefresh.Data
         {
         }
 
-        public System.Data.Entity.DbSet<DotNetFrameworkRefresh.Models.Car> Cars { get; set; }
+        public DbSet<Models.Car> Cars { get; set; }
+
+        public DbSet<Models.Service> Services { get; set; }
     }
 }

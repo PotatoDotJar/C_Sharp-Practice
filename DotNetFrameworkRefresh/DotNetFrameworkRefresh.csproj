@@ -128,11 +128,26 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CarsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Data\DatabaseContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011141932058_Initial.cs" />
+    <Compile Include="Migrations\202011141932058_Initial.Designer.cs">
+      <DependentUpon>202011141932058_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011142153168_AddedCarService.cs" />
+    <Compile Include="Migrations\202011142153168_AddedCarService.Designer.cs">
+      <DependentUpon>202011142153168_AddedCarService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011142207081_UpdatedCarService.cs" />
+    <Compile Include="Migrations\202011142207081_UpdatedCarService.Designer.cs">
+      <DependentUpon>202011142207081_UpdatedCarService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +161,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Connections.config" />
+    <Content Include="Connection.template.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -176,6 +193,10 @@
     <Content Include="Views\Cars\Details.cshtml" />
     <Content Include="Views\Cars\Edit.cshtml" />
     <Content Include="Views\Cars\Index.cshtml" />
+    <Content Include="Views\Services\Create.cshtml" />
+    <Content Include="Views\Services\Delete.cshtml" />
+    <Content Include="Views\Services\Details.cshtml" />
+    <Content Include="Views\Services\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -192,6 +213,17 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202011141932058_Initial.resx">
+      <DependentUpon>202011141932058_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011142153168_AddedCarService.resx">
+      <DependentUpon>202011142153168_AddedCarService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011142207081_UpdatedCarService.resx">
+      <DependentUpon>202011142207081_UpdatedCarService.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

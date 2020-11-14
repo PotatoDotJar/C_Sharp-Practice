@@ -43,6 +43,50 @@
         </dd>
 
     </dl>
+    <hr />
+
+    <h4>Service History</h4>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Services.FirstOrDefault().Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Services.FirstOrDefault().ServiceDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Services.FirstOrDefault().ServiceHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Services.FirstOrDefault().ServiceNotes)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Services)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Id.ToString(), "Details", "Services", new { id = item.Id }, null)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceHours)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceNotes)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Services", new { id = item.Id }, null) |
+                    @Html.ActionLink("Details", "Details", "Services", new { id = item.Id }, null) |
+                    @Html.ActionLink("Delete", "Delete", "Services", new { id = item.Id }, null)
+                </td>
+            </tr>
+        }
+
+    </table>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

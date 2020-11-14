@@ -1,0 +1,50 @@
+﻿@model DotNetFrameworkRefresh.Models.Service
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Service</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Car.IdentificationNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.IdentificationNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceHours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceHours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceNotes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceNotes)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | 
+    @Html.ActionLink("Back to Vehicle", "Details", "Cars", new { Id = Model.CarId }, null)
+</p>
