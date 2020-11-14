@@ -163,6 +163,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Connections.config" />
     <Content Include="Connection.template.config" />
+    <Content Include="Connection.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
