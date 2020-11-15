@@ -1,13 +1,11 @@
 ﻿@model DotNetFrameworkRefresh.Models.Car
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Vehicle Details";
 }
 
-<h2>Details</h2>
-
+<h2>@ViewBag.Title</h2>
 <div>
-    <h4>Car</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -43,9 +41,18 @@
         </dd>
 
     </dl>
-    <hr />
 
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    <hr />
+</div>
+<div>
     <h4>Service History</h4>
+    <p>
+        @Html.ActionLink("Add New Service Entry", "Create", "Services", new { carId = Model.Id }, null)
+    </p>
     <table class="table">
         <tr>
             <th>
@@ -80,7 +87,6 @@
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", "Services", new { id = item.Id }, null) |
-                    @Html.ActionLink("Details", "Details", "Services", new { id = item.Id }, null) |
                     @Html.ActionLink("Delete", "Delete", "Services", new { id = item.Id }, null)
                 </td>
             </tr>
@@ -88,7 +94,3 @@
 
     </table>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -18,17 +18,22 @@ namespace DotNetFrameworkRefresh.Models
         [Key]
         public int Id { get; set; }
 
+        [Required]
         [Display(Name = "Vehicle Make")]
         public string Make { get; set; }
 
+        [Required]
         [Display(Name = "Vehicle Model")]
         public string Model { get; set; }
 
+        [Required]
         [Display(Name = "VIN")]
         public string IdentificationNumber { get; set; }
 
+        [Required]
         [Display(Name = "Mileage")]
-        public int Mileage { get; set; }
+        [DisplayFormat(DataFormatString = "{0:N0}", ApplyFormatInEditMode = true)]
+        public int? Mileage { get; set; }
 
         public virtual ICollection<Service> Services { get; set; }
     }

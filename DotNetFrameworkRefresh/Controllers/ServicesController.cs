@@ -39,10 +39,21 @@ namespace DotNetFrameworkRefresh.Controllers
         }
 
         // GET: Services/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create(int? carId)
         {
-            ViewBag.CarId = new SelectList(db.Cars, "Id", "IdentificationNumber");
-            return View();
+            if(!carId.HasValue)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var car = await db.Cars.FindAsync(carId);
+
+            if(car == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(new Service() { CarId = car.Id, Car = car });
         }
 
         // POST: Services/Create
@@ -56,10 +67,23 @@ namespace DotNetFrameworkRefresh.Controllers
             {
                 db.Services.Add(service);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Cars", new { id = service.CarId });
             }
 
-            ViewBag.CarId = new SelectList(db.Cars, "Id", "IdentificationNumber", service.CarId);
+            if (!service.CarId.HasValue)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var car = await db.Cars.FindAsync(service.CarId);
+
+            if (car == null)
+            {
+                return HttpNotFound();
+            }
+
+            service.Car = car;
+
             return View(service);
         }
 
@@ -90,7 +114,7 @@ namespace DotNetFrameworkRefresh.Controllers
             {
                 db.Entry(service).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Cars", new { id = service.CarId });
             }
             ViewBag.CarId = new SelectList(db.Cars, "Id", "IdentificationNumber", service.CarId);
             return View(service);
@@ -117,9 +141,17 @@ namespace DotNetFrameworkRefresh.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Service service = await db.Services.FindAsync(id);
+
+            if(service == null)
+            {
+                return HttpNotFound();
+            }
+
+            var carId = service.CarId;
+
             db.Services.Remove(service);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "Cars", new { id = carId });
         }
 
         protected override void Dispose(bool disposing)
